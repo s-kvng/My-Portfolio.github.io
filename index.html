@@ -71,6 +71,48 @@
       #about-img {
         background-color: #aaabb6;
       }
+
+      .wrapper::after{
+        position: absolute;
+        content: '';
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        left:60%;
+        top: 12%;
+        background: linear-gradient(45deg, #aaa , pink);
+        animation: object1 6s linear infinite;
+    
+      }
+
+      .wrapper::before{
+        position: absolute;
+        content: '';
+        height: 200px;
+        width: 200px;
+        z-index: -111;
+        border-radius: 50%;
+        left:-12%;
+        top: 60%;
+        background: linear-gradient(45deg, #aaa , pink);
+        animation: object2 6s linear infinite;
+    
+      }
+  
+      @keyframes object2{
+        50%{
+          left: -20%;
+          top: 50%;
+        }
+      }
+
+      @keyframes object1{
+        50%{
+          left: 35%;
+          top: 10%;
+        }
+      }
+      
     }
 
     @media (min-width: 992px) {
@@ -79,7 +121,48 @@
         transform: rotate(-6deg);
 
       }
+
+      .wrapper::before{
+        position: absolute;
+        content: '';
+        height: 200px;
+        width: 200px;
+        z-index: -111;
+        border-radius: 50%;
+        left:-5%;
+        top: 60%;
+        background: linear-gradient(45deg, #aaa , pink);
+        animation: object2 6s linear infinite;
+    
+      }
+  
+      @keyframes object2{
+        50%{
+          left: 10%;
+          top: 55%;
+        }
+      }
+
+      
     }
+
+    
+
+    .topline{
+      position:relative
+    }
+
+    .topline::after{
+      position:absolute;
+      content: '';
+      height: 4px;
+      width:45px;
+      bottom:10px;
+      background-color: rgb(197, 196, 196);
+    }
+
+    
+
   </style>
 
 </head>
@@ -113,7 +196,7 @@
           <!-- Left Links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a href="#about" class="nav-link text-muted">About</a>
+              <a href="#about" class="nav-link text-muted about">About</a>
             </li>
 
             <li class="nav-item">
@@ -219,17 +302,17 @@
     <section>
 
       <!-- First Column -->
-      <div class="container-fluid px-0">
+      <div class="container-fluid px-0 wrapper">
         <div class="row g-0">
-          <div class="col-lg-6  vh-100 d-flex flex-column justify-content-center align-items-center">
+          <div class="col-lg-6 vh-100 d-flex flex-column justify-content-center align-items-center">
 
             <!-- heading -->
             <div class="h-100 d-flex justify-content-center align-items-center px-5">
               <div class="">
-                <h2 class="display-4 text-muted ">Nathaniel E. Adama</h2>
+                <h2 class="display-4 text-muted topline">Nathaniel E. Adama</h2>
                 <h1 class="display-2 fw-bold text-uppercase " style="color: #c5cdd8">
                   <!-- <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer"></span> -->
-                  WEB DEVELOPER
+                  I'm a <span class="multiText"></span>
 
                 </h1>
               </div>
@@ -414,7 +497,7 @@
           <!-- second column -->
           <div class="col-lg-6">
             <div class=" rounded-7 p-lg-0 p-2" id="about-img">
-              <div class="bg-image hover-overlay rotate-lg rounded-7 shadow-5 m-lg-0 ms-n3">
+              <div class="bg-image hover-overlay rotate-lg rounded-7 shadow-5 m-lg-0 ms-n3 ">
 
                 <!-- https://mdbootstrap.com/img/new/standard/people/272.jpg -->
                 <img src="img/Art-46.jpg" class="w-100  " alt="pic" />
@@ -690,7 +773,7 @@
               style="background: hsla(0, 0%, 100%, 0.7); backdrop-filter: blur(10px);">
 
               <!-- card image  -->
-              <div class="bg-image hover-overlay ripple mx-3 shadow-4-strong rounded-6 mt-n3"
+              <div class="bg-image hover-overlay ripple mx-3 shadow-4-strong rounded-6 mt-n3 imgbox"
                 data-mdb-ripple-color="light">
                 <img src="./img/bookmark_project.png" alt="" class="w-100" style="min-height: 177px;">
 
@@ -1384,10 +1467,12 @@
   <!-- Vendor files -->
   <script src="assets/vendor/typed.js/typed.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
   <!-- MDB -->
   <script type="text/javascript" src="js/mdb.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript">
+  <script>
 
     let navbar = document.getElementById("main-navbar");
 
@@ -1399,6 +1484,15 @@
         navbar.classList.remove("navbar-after-scroll");
       }
     })
+
+    var typingEffect = new Typed(".multiText",{
+      strings : ["Developer", "Photographer",],
+      loop : true,
+      typeSpeed : 100,
+       backSpeed : 80,
+       backDelay : 1500,
+    })
+
   </script>
 </body>
 
